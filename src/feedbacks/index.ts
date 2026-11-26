@@ -2,11 +2,11 @@ import {
     CompanionFeedbackDefinitions,
 } from '@companion-module/base';
 
-import type { PulseAudioSource, PulseAudioSink, PulseAudioSinkInput } from '../models';
-import sinksMuted from './sinksMuted';
-import sourcesMuted from './sourcesMuted';
-import sinkInputsMuted from './sinkInputsMuted';
-import sinkInputsActive from './sinkInputsActive';
+import type { PulseAudioSource, PulseAudioSink, PulseAudioSinkInput } from '../models/index.js';
+import sinksMuted from './sinksMuted.js';
+import sourcesMuted from './sourcesMuted.js';
+import sinkInputsMuted from './sinkInputsMuted.js';
+import sinkInputsActive from './sinkInputsActive.js';
 
 export const FEEDBACK_ID_SINKS_MUTED = 'sinksMuted';
 export const FEEDBACK_ID_SOURCES_MUTED = 'sourcesMuted';

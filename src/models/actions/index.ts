@@ -1,10 +1,10 @@
-import type ActiveStateParams from './ActiveStateParams';
-import type MuteParams from './MuteParams';
-import type SinkParams from './SinkParams';
-import type SinkInputParams from './SinkInputParams';
-import type SourceParams from './SourceParams';
-import type VolumeAdjustParams from './VolumeAdjustParams';
-import type VolumeParams from './VolumeParams';
+import type ActiveStateParams from './ActiveStateParams.js';
+import type MuteParams from './MuteParams.js';
+import type SinkParams from './SinkParams.js';
+import type SinkInputParams from './SinkInputParams.js';
+import type SourceParams from './SourceParams.js';
+import type VolumeAdjustParams from './VolumeAdjustParams.js';
+import type VolumeParams from './VolumeParams.js';
 
 export {
     ActiveStateParams,

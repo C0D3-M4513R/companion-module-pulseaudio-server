@@ -1,7 +1,7 @@
 import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
-import { ACTION_ID_TOGGLE_MUTE_SOURCES, } from '../actions';
-import { FEEDBACK_ID_SOURCES_MUTED } from '../feedbacks';
+import { ACTION_ID_TOGGLE_MUTE_SOURCES, } from '../actions/index.js';
+import { FEEDBACK_ID_SOURCES_MUTED } from '../feedbacks/index.js';
 
 const sourceMutePreset: CompanionPresetDefinition = {
     type: 'simple',

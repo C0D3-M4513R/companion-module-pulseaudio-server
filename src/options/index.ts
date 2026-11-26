@@ -1,7 +1,7 @@
-import adjustmentPercentageOption from './AdjustmentPercentage';
-import muteStateOption from './MuteState';
-import activeStateOption from './ActiveState';
-import volumePercentageOption from './VolumePercentage';
+import adjustmentPercentageOption from './AdjustmentPercentage.js';
+import muteStateOption from './MuteState.js';
+import activeStateOption from './ActiveState.js';
+import volumePercentageOption from './VolumePercentage.js';
 
 export {
     activeStateOption,
@@ -10,6 +10,6 @@ export {
     volumePercentageOption,
 };
 
-export * from './SinkInputSelector';
-export * from './SinkSelector';
-export * from './SourceSelector';
+export * from './SinkInputSelector.js';
+export * from './SinkSelector.js';
+export * from './SourceSelector.js';

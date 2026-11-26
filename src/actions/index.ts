@@ -1,22 +1,22 @@
 import type { PulseAudio } from 'pulseaudio.js';
 import type { CompanionActionDefinitions } from '@companion-module/base';
 
-import setMuteSources from './setMuteSources';
-import setMuteSinks from './setMuteSinks';
-import setMuteSinkInputs from './setMuteSinkInputs';
-import toggleMuteSinkInputs from './toggleMuteSinkInputs';
-import toggleMuteSources from './toggleMuteSources';
-import toggleMuteSinks from './toggleMuteSinks';
-import volumeAdjustSinkInputs from './volumeAdjustSinkInputs';
-import setVolumeSinks from './setVolumeSinks';
-import setVolumeSources from './setVolumeSources';
-import adjustVolumeSources from './adjustVolumeSources';
+import setMuteSources from './setMuteSources.js';
+import setMuteSinks from './setMuteSinks.js';
+import setMuteSinkInputs from './setMuteSinkInputs.js';
+import toggleMuteSinkInputs from './toggleMuteSinkInputs.js';
+import toggleMuteSources from './toggleMuteSources.js';
+import toggleMuteSinks from './toggleMuteSinks.js';
+import volumeAdjustSinkInputs from './volumeAdjustSinkInputs.js';
+import setVolumeSinks from './setVolumeSinks.js';
+import setVolumeSources from './setVolumeSources.js';
+import adjustVolumeSources from './adjustVolumeSources.js';
 
 import type {
     PulseAudioSink,
     PulseAudioSource,
     PulseAudioSinkInput,
-} from '../models';
+} from '../models/index.js';
 
 export const ACTION_ID_SET_MUTE_SOURCES = 'setMuteSources';
 export const ACTION_ID_TOGGLE_MUTE_SOURCES = 'toggleMuteSources';

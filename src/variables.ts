@@ -7,7 +7,7 @@ import type {
 import type {
     PulseAudioSink,
     PulseAudioSource,
-} from './models';
+} from './models/index.js';
 
 const VARIABLE_ID_SERVER_NAME = 'SERVER_NAME';
 const VARIABLE_ID_SERVER_VERSION = 'SERVER_VERSION';

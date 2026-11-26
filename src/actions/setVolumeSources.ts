@@ -1,9 +1,9 @@
 import { percentToVolume, PulseAudio } from 'pulseaudio.js';
 import type { CompanionActionDefinition } from '@companion-module/base';
 
-import type { PulseAudioSource, SourceParams, VolumeParams } from '../models';
-import { generateSourceDropdown, volumePercentageOption } from '../options';
-import { applyToMatches, standardAction } from './standardAction';
+import type { PulseAudioSource, SourceParams, VolumeParams } from '../models/index.js';
+import { generateSourceDropdown, volumePercentageOption } from '../options/index.js';
+import { applyToMatches, standardAction } from './standardAction.js';
 
 const setVolumeSources = (
     client: PulseAudio,

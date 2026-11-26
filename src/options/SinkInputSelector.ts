@@ -1,4 +1,4 @@
-import type { PulseAudioSinkInput } from '../models';
+import type { PulseAudioSinkInput } from '../models/index.js';
 
 export const generateSinkInputChoices = (
     sinkInputs: PulseAudioSinkInput[],

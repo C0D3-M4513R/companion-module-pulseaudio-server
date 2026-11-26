@@ -3,9 +3,9 @@ import {
     CompanionFeedbackDefinition,
 } from '@companion-module/base';
 
-import { SinkParams, type PulseAudioSink } from '../models';
-import { generateSinkDropdown } from '../options';
-import standardFeedback from './standardFeedback';
+import { SinkParams, type PulseAudioSink } from '../models/index.js';
+import { generateSinkDropdown } from '../options/index.js';
+import standardFeedback from './standardFeedback.js';
 
 const sinksMuted = (
     sinks: PulseAudioSink[],

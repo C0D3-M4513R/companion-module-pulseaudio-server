@@ -9,7 +9,7 @@ import {
 import {
     ModuleConfig,
     configFields,
-} from './models';
+} from './models/index.js';
 import {
     variableDefinitions,
 } from './variables.js';

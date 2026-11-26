@@ -1,9 +1,9 @@
 import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
-import { ACTION_ID_VOLUME_ADJUST_SINK_INPUTS, } from '../actions';
+import { ACTION_ID_VOLUME_ADJUST_SINK_INPUTS, } from '../actions/index.js';
 import {
     FEEDBACK_ID_SINK_INPUTS_ACTIVE,
-} from '../feedbacks';
+} from '../feedbacks/index.js';
 
 const sinkInputVolumeAdjustPreset: CompanionPresetDefinition = {
     type: 'simple',

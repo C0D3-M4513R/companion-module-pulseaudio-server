@@ -3,9 +3,9 @@ import {
     CompanionFeedbackDefinition,
 } from '@companion-module/base';
 
-import { generateSourceDropdown } from '../options';
-import type { PulseAudioSource, SourceParams } from '../models';
-import standardFeedback from './standardFeedback';
+import { generateSourceDropdown } from '../options/index.js';
+import type { PulseAudioSource, SourceParams } from '../models/index.js';
+import standardFeedback from './standardFeedback.js';
 
 const sourcesMuted = (
     sources: PulseAudioSource[],

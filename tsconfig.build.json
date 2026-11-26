@@ -5,8 +5,6 @@
 	"compilerOptions": {
 		"outDir": "./dist",
 		"rootDir": "./src",
-		"module": "commonjs",
-		"moduleResolution": "bundler",
 		"verbatimModuleSyntax": false
 	}
 }

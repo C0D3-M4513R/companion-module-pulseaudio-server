@@ -1,9 +1,9 @@
 import { percentToVolume, PulseAudio } from 'pulseaudio.js';
 import type { CompanionActionDefinition } from '@companion-module/base';
 
-import type { PulseAudioSink, SinkParams, VolumeParams } from '../models';
-import { generateSinkDropdown, volumePercentageOption } from '../options';
-import { applyToMatches, standardAction } from './standardAction';
+import type { PulseAudioSink, SinkParams, VolumeParams } from '../models/index.js';
+import { generateSinkDropdown, volumePercentageOption } from '../options/index.js';
+import { applyToMatches, standardAction } from './standardAction.js';
 
 const setVolumeSinks = (
     client: PulseAudio,

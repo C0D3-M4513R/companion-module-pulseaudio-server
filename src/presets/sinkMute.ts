@@ -1,7 +1,7 @@
 import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
-import { ACTION_ID_TOGGLE_MUTE_SINKS, } from '../actions';
-import { FEEDBACK_ID_SINKS_MUTED } from '../feedbacks';
+import { ACTION_ID_TOGGLE_MUTE_SINKS, } from '../actions/index.js';
+import { FEEDBACK_ID_SINKS_MUTED } from '../feedbacks/index.js';
 
 const sinkMutePreset: CompanionPresetDefinition = {
     type: 'simple',

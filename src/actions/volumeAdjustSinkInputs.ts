@@ -1,9 +1,9 @@
 import { percentToVolume, volumeToPercent, PulseAudio } from 'pulseaudio.js';
 import type { CompanionActionDefinition } from '@companion-module/base';
 
-import type { PulseAudioSinkInput, SinkInputParams, VolumeAdjustParams } from '../models';
-import { adjustmentPercentageOption, generateSinkInputDropdown } from '../options';
-import { applyToMatches, standardAction } from './standardAction';
+import type { PulseAudioSinkInput, SinkInputParams, VolumeAdjustParams } from '../models/index.js';
+import { adjustmentPercentageOption, generateSinkInputDropdown } from '../options/index.js';
+import { applyToMatches, standardAction } from './standardAction.js';
 
 // Pulse Audio True Maximum (+11 dB)
 const MAX_VOLUME = 153;

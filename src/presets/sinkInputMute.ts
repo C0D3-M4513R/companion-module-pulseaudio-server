@@ -1,10 +1,10 @@
 import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
-import { ACTION_ID_TOGGLE_MUTE_SINK_INPUTS, } from '../actions';
+import { ACTION_ID_TOGGLE_MUTE_SINK_INPUTS, } from '../actions/index.js';
 import {
     FEEDBACK_ID_SINK_INPUTS_MUTED,
     FEEDBACK_ID_SINK_INPUTS_ACTIVE,
-} from '../feedbacks';
+} from '../feedbacks/index.js';
 
 const sinkInputMutePreset: CompanionPresetDefinition = {
     type: 'simple',

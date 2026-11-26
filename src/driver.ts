@@ -7,7 +7,7 @@ import type {
     PulseAudioSink,
     PulseAudioSinkInput,
     PulseAudioSource,
-} from './models';
+} from './models/index.js';
 
 export const clientForConfig = ({
     cookie,

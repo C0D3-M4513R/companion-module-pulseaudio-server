@@ -1,8 +1,8 @@
 import type { CompanionPresetDefinitions } from '@companion-module/base';
-import sourceMute from './sourceMute';
-import sinkMute from './sinkMute';
-import sinkInputMute from './sinkInputMute';
-import sinkInputVolumeAdjust from './sinkInputVolumeAdjust';
+import sourceMute from './sourceMute.js';
+import sinkMute from './sinkMute.js';
+import sinkInputMute from './sinkInputMute.js';
+import sinkInputVolumeAdjust from './sinkInputVolumeAdjust.js';
 
 const presets: CompanionPresetDefinitions = {
     sourceMute,

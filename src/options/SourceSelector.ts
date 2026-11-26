@@ -1,4 +1,4 @@
-import type { PulseAudioSource } from '../models';
+import type { PulseAudioSource } from '../models/index.js';
 
 export const generateSourceChoices = (
     availableSources: PulseAudioSource[],

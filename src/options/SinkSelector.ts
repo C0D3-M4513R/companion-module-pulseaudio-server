@@ -1,5 +1,5 @@
 import { CompanionInputFieldMultiDropdown } from '@companion-module/base';
-import type { PulseAudioSink } from '../models';
+import type { PulseAudioSink } from '../models/index.js';
 
 export const generateSinkChoices = (
     availableSources: PulseAudioSink[],

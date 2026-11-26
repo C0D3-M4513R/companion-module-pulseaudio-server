@@ -2,9 +2,9 @@ import type { PulseAudio } from 'pulseaudio.js';
 
 import type { CompanionActionDefinition } from '@companion-module/base';
 
-import type { PulseAudioSource, SourceParams } from '../models';
-import { generateSourceDropdown } from '../options';
-import { standardAction, applyToMatches } from './standardAction';
+import type { PulseAudioSource, SourceParams } from '../models/index.js';
+import { generateSourceDropdown } from '../options/index.js';
+import { standardAction, applyToMatches } from './standardAction.js';
 
 const toggleMuteSources = (
     client: PulseAudio,

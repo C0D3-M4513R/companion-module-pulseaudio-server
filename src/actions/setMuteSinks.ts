@@ -2,9 +2,9 @@ import type { PulseAudio } from 'pulseaudio.js';
 
 import type { CompanionActionDefinition } from '@companion-module/base';
 
-import type { PulseAudioSink, SinkParams, MuteParams } from '../models';
-import { generateSinkDropdown, muteStateOption } from '../options';
-import { standardAction, applyToMatches } from './standardAction';
+import type { PulseAudioSink, SinkParams, MuteParams } from '../models/index.js';
+import { generateSinkDropdown, muteStateOption } from '../options/index.js';
+import { standardAction, applyToMatches } from './standardAction.js';
 
 const setMuteSinks = (
     client: PulseAudio,
