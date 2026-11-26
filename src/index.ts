@@ -88,7 +88,7 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
             await this.configUpdated(config);
             log.info('PulseAudio Module Started');
         } catch (err: unknown) {
-            log.error('Error in PulseAudio init', JSON.stringify(err, null, 2));
+            log.error('Error in PulseAudio init', err instanceof Error ? `${err.message}\n${err.stack ?? ''}` : String(err));
         }
     }
 
@@ -99,7 +99,7 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
         try {
             await this.client?.disconnect();
         } catch (err: unknown) {
-            log.warn('Error while disconnecting from PulseAudio', JSON.stringify(err, null, 2));
+            log.warn('Error while disconnecting from PulseAudio', err instanceof Error ? `${err.message}\n${err.stack ?? ''}` : String(err));
         }
     }
 
@@ -140,7 +140,7 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
             log.debug('Setting Instance Status to OK');
             this.updateStatus(InstanceStatus.Ok);
         } catch (err: unknown) {
-            log.error('Unable to connect to PulseAudio', JSON.stringify(err, null, 2));
+            log.error('Unable to connect to PulseAudio', err instanceof Error ? `${err.message}\n${err.stack ?? ''}` : String(err));
             this.updateStatus(InstanceStatus.BadConfig);
         }
     }

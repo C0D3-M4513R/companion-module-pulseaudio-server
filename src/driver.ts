@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import { PulseAudio } from 'pulseaudio.js';
 
 import type {
@@ -10,11 +12,23 @@ import type {
 export const clientForConfig = ({
     cookie,
     sockPath,
-}: ModuleConfig): PulseAudio => new PulseAudio(
-    undefined,
-    cookie ? Buffer.from(cookie) : undefined,
-    sockPath,
-);
+}: ModuleConfig): PulseAudio => {
+    let cookieBuffer: Buffer | undefined;
+    if (cookie) {
+        // `cookie` is configured as an absolute path to the authentication
+        // cookie file, not the raw cookie bytes.
+        try {
+            cookieBuffer = fs.readFileSync(cookie);
+        } catch (err) {
+            throw new Error(`Unable to read PulseAudio authentication cookie at '${cookie}': ${err instanceof Error ? err.message : String(err)}`);
+        }
+    }
+    return new PulseAudio(
+        undefined,
+        cookieBuffer,
+        sockPath || undefined,
+    );
+};
 
 export const getSources = async (client: PulseAudio): Promise<PulseAudioSource[]> => {
     const sources = await client.getAllSources();

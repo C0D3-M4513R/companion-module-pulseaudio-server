@@ -4,3 +4,7 @@ yarn.lock
 dist/
 /pkg
 /pkg.tgz
+*.tgz
+*.patch
+flake.nix
+flake.lock
