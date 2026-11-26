@@ -6,7 +6,7 @@ export default [
 	})),
 	{
 		rules: {
-			'n/no-missing-import': 'off',
+			'n/no-missing-import': ['error', { allowModules: ['pulseaudio.js'] }],
 		},
 	},
 ]
