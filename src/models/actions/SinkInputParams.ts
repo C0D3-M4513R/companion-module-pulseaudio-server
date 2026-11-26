@@ -1,5 +1,5 @@
 type SinkInputParams = {
-    sinkInputApplicationNames: string[]
-};
+	sinkInputApplicationNames: string[]
+}
 
-export default SinkInputParams;
+export default SinkInputParams

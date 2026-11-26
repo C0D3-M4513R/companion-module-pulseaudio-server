@@ -1,5 +1,5 @@
 type SinkParams = {
-    sinkIDs: string[]
-};
+	sinkIDs: string[]
+}
 
-export default SinkParams;
+export default SinkParams

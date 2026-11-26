@@ -1,5 +1,5 @@
 type VolumeParams = {
-    volumePercentage: number
-};
+	volumePercentage: number
+}
 
-export default VolumeParams;
+export default VolumeParams

@@ -26,11 +26,6 @@
 	},
 	"legacyIds": [],
 	"manufacturer": "PulseAudio",
-	"products": [
-		"Server"
-	],
-	"keywords": [
-		"PulseAudio",
-		"pavucontrol"
-	]
+	"products": ["Server"],
+	"keywords": ["PulseAudio", "pavucontrol"]
 }

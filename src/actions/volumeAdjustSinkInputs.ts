@@ -1,49 +1,38 @@
-import { percentToVolume, volumeToPercent, PulseAudio } from 'pulseaudio.js';
-import type { CompanionActionDefinition } from '@companion-module/base';
+import { percentToVolume, volumeToPercent, PulseAudio } from 'pulseaudio.js'
+import type { CompanionActionDefinition } from '@companion-module/base'
 
-import type { PulseAudioSinkInput, SinkInputParams, VolumeAdjustParams } from '../models/index.js';
-import { adjustmentPercentageOption, generateSinkInputDropdown } from '../options/index.js';
-import { applyToMatches, standardAction } from './standardAction.js';
+import type { PulseAudioSinkInput, SinkInputParams, VolumeAdjustParams } from '../models/index.js'
+import { adjustmentPercentageOption, generateSinkInputDropdown } from '../options/index.js'
+import { applyToMatches, standardAction } from './standardAction.js'
 
 // Pulse Audio True Maximum (+11 dB)
-const MAX_VOLUME = 153;
-const MIN_VOLUME = 0;
+const MAX_VOLUME = 153
+const MIN_VOLUME = 0
 
 const adjustedVolume = (adjustmentPercentagePoints: number) => (startingVolume: number) => {
-    const currentPercentage = volumeToPercent(startingVolume);
-    const percentageRatio = adjustmentPercentagePoints;
-    const adjustedPercentage = Math.max(
-        MIN_VOLUME,
-        Math.min(
-            MAX_VOLUME,
-            currentPercentage + percentageRatio
-        ),
-    );
-    const adjustedVolume = percentToVolume(adjustedPercentage);
-    return adjustedVolume;
-};
+	const currentPercentage = volumeToPercent(startingVolume)
+	const percentageRatio = adjustmentPercentagePoints
+	const adjustedPercentage = Math.max(MIN_VOLUME, Math.min(MAX_VOLUME, currentPercentage + percentageRatio))
+	const adjustedVolume = percentToVolume(adjustedPercentage)
+	return adjustedVolume
+}
 
-const volumeAdjustSinkInputs = (
-    client: PulseAudio,
-    sinkInputs: PulseAudioSinkInput[],
-): CompanionActionDefinition => standardAction<SinkInputParams & VolumeAdjustParams>({
-    name: 'Adjust Volume for Sink Inputs',
-    options: [
-        adjustmentPercentageOption,
-        generateSinkInputDropdown(sinkInputs),
-    ],
-    onEvent: async ({ adjustmentPercentage, sinkInputApplicationNames }) => {
-        const resolvedAdjustment = Number(adjustmentPercentage);
-        return applyToMatches(
-            sinkInputs,
-            ({ properties: { application } }) => application.name,
-            sinkInputApplicationNames,
-            ({ volume, index }: PulseAudioSinkInput) => {
-                const newVolume = volume.map(adjustedVolume(resolvedAdjustment));
-                return client.setSinkInputVolume(index, newVolume);
-            },
-        );
-    },
-});
+const volumeAdjustSinkInputs = (client: PulseAudio, sinkInputs: PulseAudioSinkInput[]): CompanionActionDefinition =>
+	standardAction<SinkInputParams & VolumeAdjustParams>({
+		name: 'Adjust Volume for Sink Inputs',
+		options: [adjustmentPercentageOption, generateSinkInputDropdown(sinkInputs)],
+		onEvent: async ({ adjustmentPercentage, sinkInputApplicationNames }) => {
+			const resolvedAdjustment = Number(adjustmentPercentage)
+			return applyToMatches(
+				sinkInputs,
+				({ properties: { application } }) => application.name,
+				sinkInputApplicationNames,
+				async ({ volume, index }: PulseAudioSinkInput) => {
+					const newVolume = volume.map(adjustedVolume(resolvedAdjustment))
+					return client.setSinkInputVolume(index, newVolume)
+				},
+			)
+		},
+	})
 
-export default volumeAdjustSinkInputs;
+export default volumeAdjustSinkInputs

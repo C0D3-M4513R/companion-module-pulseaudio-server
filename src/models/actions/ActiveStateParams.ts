@@ -1,5 +1,5 @@
 type ActiveStateParams = {
-    activeState: boolean
-};
+	activeState: boolean
+}
 
-export default ActiveStateParams;
+export default ActiveStateParams

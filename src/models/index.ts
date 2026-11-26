@@ -1,9 +1,7 @@
-import type PulseAudioSinkInput from './PulseAudioSinkInput.js';
+import type PulseAudioSinkInput from './PulseAudioSinkInput.js'
 
-export {
-    PulseAudioSinkInput,
-};
+export { PulseAudioSinkInput }
 
-export * from './actions/index.js';
-export * from './ModuleConfig.js';
-export * from './PulseAudioSource.js';
+export * from './actions/index.js'
+export * from './ModuleConfig.js'
+export * from './PulseAudioSource.js'

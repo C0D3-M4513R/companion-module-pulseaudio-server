@@ -1,5 +1,5 @@
 type VolumeAdjustParams = {
-    adjustmentPercentage: number
-};
+	adjustmentPercentage: number
+}
 
-export default VolumeAdjustParams;
+export default VolumeAdjustParams

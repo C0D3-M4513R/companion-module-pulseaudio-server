@@ -1,5 +1,5 @@
 type SourceParams = {
-    sourceIDs: string[]
-};
+	sourceIDs: string[]
+}
 
-export default SourceParams;
+export default SourceParams

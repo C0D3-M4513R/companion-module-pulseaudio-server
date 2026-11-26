@@ -1,5 +1,5 @@
 type MuteParams = {
-    muteState: boolean
-};
+	muteState: boolean
+}
 
-export default MuteParams;
+export default MuteParams
