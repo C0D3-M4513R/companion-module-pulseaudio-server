@@ -1,0 +1,46 @@
+import { percentToVolume, volumeToPercent, PulseAudio } from 'pulseaudio.js';
+import type { CompanionActionDefinition } from '@companion-module/base';
+
+import type { PulseAudioSource, SourceParams, VolumeAdjustParams } from '../models';
+import { adjustmentPercentageOption, generateSourceDropdown } from '../options';
+import { applyToMatches, standardAction } from './standardAction';
+
+// Pulse Audio True Maximum (+11 dB)
+const MAX_VOLUME = 153;
+const MIN_VOLUME = 0;
+
+const adjustedVolume = (adjustmentPercentagePoints: number) => (startingVolume: number) => {
+    const currentPercentage = volumeToPercent(startingVolume);
+    const percentageRatio = adjustmentPercentagePoints;
+    const adjustedPercentage = Math.max(
+        MIN_VOLUME,
+        Math.min(
+            MAX_VOLUME,
+            currentPercentage + percentageRatio
+        ),
+    );
+    const adjustedVolume = percentToVolume(adjustedPercentage);
+    return adjustedVolume;
+};
+
+const adjustVolumeSources = (
+    client: PulseAudio,
+    sources: PulseAudioSource[],
+): CompanionActionDefinition => standardAction<SourceParams & VolumeAdjustParams>({
+    name: 'Adjust Volume for Sources',
+    options: [
+        adjustmentPercentageOption,
+        generateSourceDropdown(sources),
+    ],
+    onEvent: async ({ adjustmentPercentage, sourceIDs }) => applyToMatches(
+        sources,
+        ({ name }) => name,
+        sourceIDs,
+        ({ volume, name }: PulseAudioSource) => {
+            const newVolume = volume.current.map(adjustedVolume(adjustmentPercentage));
+            return client.setSourceVolume(newVolume, name);
+        },
+    ),
+});
+
+export default adjustVolumeSources;

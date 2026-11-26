@@ -8,6 +8,9 @@ import toggleMuteSinkInputs from './toggleMuteSinkInputs';
 import toggleMuteSources from './toggleMuteSources';
 import toggleMuteSinks from './toggleMuteSinks';
 import volumeAdjustSinkInputs from './volumeAdjustSinkInputs';
+import setVolumeSinks from './setVolumeSinks';
+import setVolumeSources from './setVolumeSources';
+import adjustVolumeSources from './adjustVolumeSources';
 
 import type {
     PulseAudioSink,
@@ -22,6 +25,9 @@ export const ACTION_ID_TOGGLE_MUTE_SINKS = 'toggleMuteSinks';
 export const ACTION_ID_SET_MUTE_SINK_INPUTS = 'setMuteSinkInputs';
 export const ACTION_ID_TOGGLE_MUTE_SINK_INPUTS = 'toggleMuteSinkInputs';
 export const ACTION_ID_VOLUME_ADJUST_SINK_INPUTS = 'volumeAdjustSinkInputs';
+export const ACTION_ID_SET_VOLUME_SINKS = 'setVolumeSinks';
+export const ACTION_ID_SET_VOLUME_SOURCES = 'setVolumeSources';
+export const ACTION_ID_ADJUST_VOLUME_SOURCES = 'adjustVolumeSources';
 
 const generateActions = (
     client: PulseAudio,
@@ -36,6 +42,9 @@ const generateActions = (
     [ACTION_ID_SET_MUTE_SINK_INPUTS]: setMuteSinkInputs(client, sinkInputs),
     [ACTION_ID_TOGGLE_MUTE_SINK_INPUTS]: toggleMuteSinkInputs(client, sinkInputs),
     [ACTION_ID_VOLUME_ADJUST_SINK_INPUTS]: volumeAdjustSinkInputs(client, sinkInputs),
+    [ACTION_ID_SET_VOLUME_SINKS]: setVolumeSinks(client, sinks),
+    [ACTION_ID_SET_VOLUME_SOURCES]: setVolumeSources(client, sources),
+    [ACTION_ID_ADJUST_VOLUME_SOURCES]: adjustVolumeSources(client, sources),
 });
 
 export default generateActions;

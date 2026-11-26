@@ -19,7 +19,7 @@ const setMuteSinks = (
         sinks,
         ({ name }) => name,
         sinkIDs,
-        ({ name }) => client.setSourceMute(muteState, name),
+        ({ name }) => client.setSinkMute(muteState, name),
     ),
 });
 

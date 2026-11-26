@@ -4,6 +4,7 @@ import type SinkParams from './SinkParams';
 import type SinkInputParams from './SinkInputParams';
 import type SourceParams from './SourceParams';
 import type VolumeAdjustParams from './VolumeAdjustParams';
+import type VolumeParams from './VolumeParams';
 
 export {
     ActiveStateParams,
@@ -12,4 +13,5 @@ export {
     SinkInputParams,
     SourceParams,
     VolumeAdjustParams,
+    VolumeParams,
 };
