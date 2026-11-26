@@ -1,4 +1,5 @@
 import type {
+    CompanionActionContext,
     CompanionActionDefinition,
     CompanionActionEvent,
     SomeCompanionActionInputField,
@@ -27,7 +28,7 @@ export const applyToMatches = async <I, O>(
 export type StandardActionParams<T> = {
     name: string
     options: SomeCompanionActionInputField[]
-    onEvent: (options: T) => (void | Promise<void>)
+    onEvent: (options: T, context: CompanionActionContext) => (void | Promise<void>)
 };
 
 export const standardAction = <T>({
@@ -37,5 +38,5 @@ export const standardAction = <T>({
 }: StandardActionParams<T>): CompanionActionDefinition => ({
     name,
     options,
-    callback: ({ options }: CompanionActionEvent) => onEvent(options as T),
+    callback: ({ options }: CompanionActionEvent, context: CompanionActionContext) => onEvent(options as T, context),
 });

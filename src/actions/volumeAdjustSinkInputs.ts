@@ -32,15 +32,18 @@ const volumeAdjustSinkInputs = (
         adjustmentPercentageOption,
         generateSinkInputDropdown(sinkInputs),
     ],
-    onEvent: async ({ adjustmentPercentage, sinkInputApplicationNames }) => applyToMatches(
-        sinkInputs,
-        ({ properties: { application } }) => application.name,
-        sinkInputApplicationNames,
-        ({ volume, index }: PulseAudioSinkInput) => {
-            const newVolume = volume.map(adjustedVolume(adjustmentPercentage));
-            return client.setSinkInputVolume(index, newVolume);
-        },
-    ),
+    onEvent: async ({ adjustmentPercentage, sinkInputApplicationNames }, context) => {
+        const resolvedAdjustment = Number(await context.parseVariablesInString(String(adjustmentPercentage)));
+        return applyToMatches(
+            sinkInputs,
+            ({ properties: { application } }) => application.name,
+            sinkInputApplicationNames,
+            ({ volume, index }: PulseAudioSinkInput) => {
+                const newVolume = volume.map(adjustedVolume(resolvedAdjustment));
+                return client.setSinkInputVolume(index, newVolume);
+            },
+        );
+    },
 });
 
 export default volumeAdjustSinkInputs;

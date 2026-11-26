@@ -32,15 +32,18 @@ const adjustVolumeSources = (
         adjustmentPercentageOption,
         generateSourceDropdown(sources),
     ],
-    onEvent: async ({ adjustmentPercentage, sourceIDs }) => applyToMatches(
-        sources,
-        ({ name }) => name,
-        sourceIDs,
-        ({ volume, name }: PulseAudioSource) => {
-            const newVolume = volume.current.map(adjustedVolume(adjustmentPercentage));
-            return client.setSourceVolume(newVolume, name);
-        },
-    ),
+    onEvent: async ({ adjustmentPercentage, sourceIDs }, context) => {
+        const resolvedAdjustment = Number(await context.parseVariablesInString(String(adjustmentPercentage)));
+        return applyToMatches(
+            sources,
+            ({ name }) => name,
+            sourceIDs,
+            ({ volume, name }: PulseAudioSource) => {
+                const newVolume = volume.current.map(adjustedVolume(resolvedAdjustment));
+                return client.setSourceVolume(newVolume, name);
+            },
+        );
+    },
 });
 
 export default adjustVolumeSources;

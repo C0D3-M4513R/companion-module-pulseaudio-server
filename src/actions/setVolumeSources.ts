@@ -14,15 +14,18 @@ const setVolumeSources = (
         volumePercentageOption,
         generateSourceDropdown(sources),
     ],
-    onEvent: async ({ sourceIDs, volumePercentage }) => applyToMatches(
-        sources,
-        ({ name }) => name,
-        sourceIDs,
-        ({ volume, name }: PulseAudioSource) => {
-            const newVolume = volume.current.map(() => percentToVolume(volumePercentage));
-            return client.setSourceVolume(newVolume, name);
-        },
-    ),
+    onEvent: async ({ sourceIDs, volumePercentage }, context) => {
+        const resolvedVolume = Number(await context.parseVariablesInString(String(volumePercentage)));
+        return applyToMatches(
+            sources,
+            ({ name }) => name,
+            sourceIDs,
+            ({ volume, name }: PulseAudioSource) => {
+                const newVolume = volume.current.map(() => percentToVolume(resolvedVolume));
+                return client.setSourceVolume(newVolume, name);
+            },
+        );
+    },
 });
 
 export default setVolumeSources;

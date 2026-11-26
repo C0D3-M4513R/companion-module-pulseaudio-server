@@ -14,15 +14,18 @@ const setVolumeSinks = (
         volumePercentageOption,
         generateSinkDropdown(sinks),
     ],
-    onEvent: async ({ sinkIDs, volumePercentage }) => applyToMatches(
-        sinks,
-        ({ name }) => name,
-        sinkIDs,
-        ({ volume, name }: PulseAudioSink) => {
-            const newVolume = volume.current.map(() => percentToVolume(volumePercentage));
-            return client.setSinkVolume(newVolume, name);
-        },
-    ),
+    onEvent: async ({ sinkIDs, volumePercentage }, context) => {
+        const resolvedVolume = Number(await context.parseVariablesInString(String(volumePercentage)));
+        return applyToMatches(
+            sinks,
+            ({ name }) => name,
+            sinkIDs,
+            ({ volume, name }: PulseAudioSink) => {
+                const newVolume = volume.current.map(() => percentToVolume(resolvedVolume));
+                return client.setSinkVolume(newVolume, name);
+            },
+        );
+    },
 });
 
 export default setVolumeSinks;
