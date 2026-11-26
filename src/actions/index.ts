@@ -1,4 +1,4 @@
-import type { PulseAudio } from 'pulseaudio.js'
+import type { PulseAudio } from 'pulseaudio-js'
 import type { CompanionActionDefinitions } from '@companion-module/base'
 
 import setMuteSources from './setMuteSources.js'

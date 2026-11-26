@@ -1,4 +1,4 @@
-import type { PulseAudio } from 'pulseaudio.js'
+import type { PulseAudio } from 'pulseaudio-js'
 
 import type { CompanionActionDefinition } from '@companion-module/base'
 

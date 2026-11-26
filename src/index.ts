@@ -1,4 +1,4 @@
-import { PulseAudio } from 'pulseaudio.js'
+import { PulseAudio } from 'pulseaudio-js'
 import { InstanceBase, InstanceStatus, InstanceTypes, LogLevel, SomeCompanionConfigField } from '@companion-module/base'
 
 import { ModuleConfig, configFields } from './models/index.js'

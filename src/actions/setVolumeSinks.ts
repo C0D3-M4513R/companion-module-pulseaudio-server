@@ -1,4 +1,4 @@
-import { percentToVolume, PulseAudio } from 'pulseaudio.js'
+import { percentToVolume, PulseAudio } from 'pulseaudio-js'
 import type { CompanionActionDefinition } from '@companion-module/base'
 
 import type { PulseAudioSink, SinkParams, VolumeParams } from '../models/index.js'

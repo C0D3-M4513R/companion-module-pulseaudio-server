@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { PulseAudio } from 'pulseaudio.js'
+import { PulseAudio } from 'pulseaudio-js'
 
 import type { ModuleConfig, PulseAudioSink, PulseAudioSinkInput, PulseAudioSource } from './models/index.js'
 
