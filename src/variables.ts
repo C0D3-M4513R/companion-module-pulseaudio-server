@@ -1,6 +1,6 @@
 import { PulseAudio, volumeToPercent } from 'pulseaudio.js';
 import type {
-    CompanionVariableDefinition,
+    CompanionVariableDefinitions,
     CompanionVariableValues,
 } from '@companion-module/base';
 
@@ -22,43 +22,20 @@ const VARIABLE_ID_DEFAULT_SOURCE_DESCRIPTION = 'DEFAULT_SOURCE_DESCRIPTION';
 const VARIABLE_ID_DEFAULT_SOURCE_VOLUME = 'DEFAULT_SOURCE_VOLUME';
 const VARIABLE_ID_DEFAULT_SOURCE_MUTE = 'DEFAULT_SOURCE_MUTE';
 
-export const variableDefinitions: CompanionVariableDefinition[] = [{
-    variableId: VARIABLE_ID_SERVER_NAME,
-    name: 'Server Name',
-}, {
-    variableId: VARIABLE_ID_SERVER_VERSION,
-    name: 'Server Version',
-}, {
-    variableId: VARIABLE_ID_SERVER_USERNAME,
-    name: 'Server Username',
-}, {
-    variableId: VARIABLE_ID_SERVER_HOSTNAME,
-    name: 'Server Hostname',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SINK_NAME,
-    name: 'Default Sink Name',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SINK_DESCRIPTION,
-    name: 'Default Sink Description',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SINK_VOLUME,
-    name: 'Default Sink Volume Percentage',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SINK_MUTE,
-    name: 'Default Sink Muted',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SOURCE_NAME,
-    name: 'Default Source Name',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SOURCE_DESCRIPTION,
-    name: 'Default Source Description',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SOURCE_VOLUME,
-    name: 'Default Source Volume Percentage',
-}, {
-    variableId: VARIABLE_ID_DEFAULT_SOURCE_MUTE,
-    name: 'Default Source Muted',
-}];
+export const variableDefinitions: CompanionVariableDefinitions = {
+    [VARIABLE_ID_SERVER_NAME]: { name: 'Server Name' },
+    [VARIABLE_ID_SERVER_VERSION]: { name: 'Server Version' },
+    [VARIABLE_ID_SERVER_USERNAME]: { name: 'Server Username' },
+    [VARIABLE_ID_SERVER_HOSTNAME]: { name: 'Server Hostname' },
+    [VARIABLE_ID_DEFAULT_SINK_NAME]: { name: 'Default Sink Name' },
+    [VARIABLE_ID_DEFAULT_SINK_DESCRIPTION]: { name: 'Default Sink Description' },
+    [VARIABLE_ID_DEFAULT_SINK_VOLUME]: { name: 'Default Sink Volume Percentage' },
+    [VARIABLE_ID_DEFAULT_SINK_MUTE]: { name: 'Default Sink Muted' },
+    [VARIABLE_ID_DEFAULT_SOURCE_NAME]: { name: 'Default Source Name' },
+    [VARIABLE_ID_DEFAULT_SOURCE_DESCRIPTION]: { name: 'Default Source Description' },
+    [VARIABLE_ID_DEFAULT_SOURCE_VOLUME]: { name: 'Default Source Volume Percentage' },
+    [VARIABLE_ID_DEFAULT_SOURCE_MUTE]: { name: 'Default Source Muted' },
+};
 
 export const getVariableValues = async (
     paClient: PulseAudio,

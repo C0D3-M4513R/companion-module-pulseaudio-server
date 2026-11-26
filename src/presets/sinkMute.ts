@@ -1,11 +1,10 @@
-import { combineRgb, CompanionButtonPresetDefinition } from '@companion-module/base';
+import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
 import { ACTION_ID_TOGGLE_MUTE_SINKS, } from '../actions';
 import { FEEDBACK_ID_SINKS_MUTED } from '../feedbacks';
 
-const sinkMutePreset: CompanionButtonPresetDefinition = {
-    type: 'button',
-    category: 'Muting',
+const sinkMutePreset: CompanionPresetDefinition = {
+    type: 'simple',
     name: 'Sink Mute',
     style: {
         text: 'Output Mute',

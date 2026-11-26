@@ -14,8 +14,8 @@ const setVolumeSinks = (
         volumePercentageOption,
         generateSinkDropdown(sinks),
     ],
-    onEvent: async ({ sinkIDs, volumePercentage }, context) => {
-        const resolvedVolume = Number(await context.parseVariablesInString(String(volumePercentage)));
+    onEvent: async ({ sinkIDs, volumePercentage }) => {
+        const resolvedVolume = Number(volumePercentage);
         return applyToMatches(
             sinks,
             ({ name }) => name,

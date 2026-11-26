@@ -14,8 +14,8 @@ const setVolumeSources = (
         volumePercentageOption,
         generateSourceDropdown(sources),
     ],
-    onEvent: async ({ sourceIDs, volumePercentage }, context) => {
-        const resolvedVolume = Number(await context.parseVariablesInString(String(volumePercentage)));
+    onEvent: async ({ sourceIDs, volumePercentage }) => {
+        const resolvedVolume = Number(volumePercentage);
         return applyToMatches(
             sources,
             ({ name }) => name,

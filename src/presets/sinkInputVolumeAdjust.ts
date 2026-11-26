@@ -1,13 +1,12 @@
-import { combineRgb, CompanionButtonPresetDefinition } from '@companion-module/base';
+import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
 import { ACTION_ID_VOLUME_ADJUST_SINK_INPUTS, } from '../actions';
 import {
     FEEDBACK_ID_SINK_INPUTS_ACTIVE,
 } from '../feedbacks';
 
-const sinkInputVolumeAdjustPreset: CompanionButtonPresetDefinition = {
-    type: 'button',
-    category: 'Volume',
+const sinkInputVolumeAdjustPreset: CompanionPresetDefinition = {
+    type: 'simple',
     name: 'Sink Input Volume Adjust',
     style: {
         text: '-10%',

@@ -1,7 +1,6 @@
 import { PulseAudio } from 'pulseaudio.js';
 import {
     InstanceBase,
-    runEntrypoint,
     InstanceStatus,
     LogLevel,
     SomeCompanionConfigField,
@@ -13,11 +12,11 @@ import {
 } from './models';
 import {
     variableDefinitions,
-} from './variables';
-import generateActions from './actions';
-import generateFeedbacks from './feedbacks';
-import presets from './presets';
-import { clientForConfig, getSinks, getSources, getSinkInputs } from './driver';
+} from './variables.js';
+import generateActions from './actions/index.js';
+import generateFeedbacks from './feedbacks/index.js';
+import presets from './presets/index.js';
+import { clientForConfig, getSinks, getSources, getSinkInputs } from './driver.js';
 
 type Logger = {
     debug: (...messages: unknown[]) => void
@@ -26,8 +25,12 @@ type Logger = {
     error: (...messages: unknown[]) => void
 };
 
-class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
+class PulseAudioModuleInstance extends InstanceBase<any> {
     private client?: PulseAudio;
+
+    constructor(internal: unknown) {
+        super(internal);
+    }
 
     getLogger(): Logger {
         const formatMessages = (messages: unknown[]) => messages.join('\n');
@@ -47,7 +50,6 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
         const log = this.getLogger();
         if (this.client) {
             log.info('Reloading state from client');
-            // Get Sources, add to instance state
             const [
                 sources,
                 sinks,
@@ -59,7 +61,7 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
             ]);
 
             log.debug('Adding custom variables to companion');
-            this.setVariableDefinitions(variableDefinitions);
+            this.setVariableDefinitions(variableDefinitions as any);
 
             log.debug('Adding custom actions to companion');
             const actions = generateActions(
@@ -75,9 +77,21 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
             this.setFeedbackDefinitions(feedbacks);
 
             log.debug('Adding custom presets to companion');
-            this.setPresetDefinitions(presets);
+            const presetStructure = [{
+                id: 'presets',
+                name: 'Presets',
+                definitions: [{
+                    id: 'group',
+                    name: 'Presets',
+                    description: 'PulseAudio presets',
+                    type: 'simple' as const,
+                    presets: Object.keys(presets),
+                }],
+            }];
+            this.setPresetDefinitions(presetStructure as any, presets as any);
+
             log.debug('Checking feedbacks');
-            this.checkFeedbacks();
+            this.checkFeedbacksById();
         }
     }
 
@@ -92,7 +106,6 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
         }
     }
 
-    // When module gets deleted
     async destroy() {
         const log = this.getLogger();
         log.info('Disconnecting from PulseAudio');
@@ -113,7 +126,7 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
             this.client = clientForConfig(config);
             this.client.on(
                 'error',
-                (err: unknown) => log.error('Error from PulseAudio.js', JSON.stringify(err, null, 2))
+                (err: unknown) => log.error('Error from PulseAudio.js', err instanceof Error ? `${err.message}\n${err.stack ?? ''}` : String(err))
             );
             log.debug('Setting Instance Status to Connecting');
             this.updateStatus(InstanceStatus.Connecting);
@@ -145,10 +158,9 @@ class PulseAudioModuleInstance extends InstanceBase<ModuleConfig> {
         }
     }
 
-    // Return config fields for web config
     getConfigFields(): SomeCompanionConfigField[] {
         return configFields;
     }
 }
 
-runEntrypoint(PulseAudioModuleInstance, [])
+export default PulseAudioModuleInstance;

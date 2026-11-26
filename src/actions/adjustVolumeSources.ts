@@ -32,8 +32,8 @@ const adjustVolumeSources = (
         adjustmentPercentageOption,
         generateSourceDropdown(sources),
     ],
-    onEvent: async ({ adjustmentPercentage, sourceIDs }, context) => {
-        const resolvedAdjustment = Number(await context.parseVariablesInString(String(adjustmentPercentage)));
+    onEvent: async ({ adjustmentPercentage, sourceIDs }) => {
+        const resolvedAdjustment = Number(adjustmentPercentage);
         return applyToMatches(
             sources,
             ({ name }) => name,

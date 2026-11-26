@@ -32,8 +32,8 @@ const volumeAdjustSinkInputs = (
         adjustmentPercentageOption,
         generateSinkInputDropdown(sinkInputs),
     ],
-    onEvent: async ({ adjustmentPercentage, sinkInputApplicationNames }, context) => {
-        const resolvedAdjustment = Number(await context.parseVariablesInString(String(adjustmentPercentage)));
+    onEvent: async ({ adjustmentPercentage, sinkInputApplicationNames }) => {
+        const resolvedAdjustment = Number(adjustmentPercentage);
         return applyToMatches(
             sinkInputs,
             ({ properties: { application } }) => application.name,

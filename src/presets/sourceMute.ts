@@ -1,11 +1,10 @@
-import { combineRgb, CompanionButtonPresetDefinition } from '@companion-module/base';
+import { combineRgb, CompanionPresetDefinition } from '@companion-module/base';
 
 import { ACTION_ID_TOGGLE_MUTE_SOURCES, } from '../actions';
 import { FEEDBACK_ID_SOURCES_MUTED } from '../feedbacks';
 
-const sourceMutePreset: CompanionButtonPresetDefinition = {
-    type: 'button',
-    category: 'Muting',
+const sourceMutePreset: CompanionPresetDefinition = {
+    type: 'simple',
     name: 'Source Mute',
     style: {
         text: 'Input Mute',
