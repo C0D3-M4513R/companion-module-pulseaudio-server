@@ -2,6 +2,7 @@ import { PulseAudio } from 'pulseaudio.js';
 import {
     InstanceBase,
     InstanceStatus,
+    InstanceTypes,
     LogLevel,
     SomeCompanionConfigField,
 } from '@companion-module/base';
@@ -25,7 +26,9 @@ type Logger = {
     error: (...messages: unknown[]) => void
 };
 
-class PulseAudioModuleInstance extends InstanceBase<any> {
+type ModuleSchema = InstanceTypes & { config: ModuleConfig };
+
+class PulseAudioModuleInstance extends InstanceBase<ModuleSchema> {
     private client?: PulseAudio;
 
     constructor(internal: unknown) {
