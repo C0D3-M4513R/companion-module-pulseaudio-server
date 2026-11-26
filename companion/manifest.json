@@ -1,36 +1,36 @@
 {
-  "$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
-  "type": "connection",
-  "id": "pulseaudio-server",
-  "name": "pulseaudio-server",
-  "shortname": "PulseAudio",
-  "description": "A module to control system audio",
-  "version": "0.9.0",
-  "license": "MIT",
-  "repository": "git+https://github.com/bitfocus/companion-module-pulseaudio-server.git",
-  "bugs": "https://github.com/bitfocus/companion-module-pulseaudio-server/issues",
-  "maintainers": [
-    {
-      "name": "Alex Mitchell",
-      "email": "alex@alexmitchelltech.com"
-    }
-  ],
-  "runtime": {
-    "type": "node26",
-    "api": "nodejs-ipc",
-    "apiVersion": "0.0.0",
-    "entrypoint": "../dist/index.js"
-  },
-  "permissions": {
-    "filesystem": true
-  },
-  "legacyIds": [],
-  "manufacturer": "PulseAudio",
-  "products": [
-    "Server"
-  ],
-    "keywords": [
-	"PulseAudio",
-	"pavucontrol"
-    ]
+	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+	"type": "connection",
+	"id": "pulseaudio-server",
+	"name": "pulseaudio-server",
+	"shortname": "PulseAudio",
+	"description": "A module to control system audio",
+	"version": "0.9.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-pulseaudio-server.git",
+	"bugs": "https://github.com/bitfocus/companion-module-pulseaudio-server/issues",
+	"maintainers": [
+		{
+			"name": "Alex Mitchell",
+			"email": "alex@alexmitchelltech.com"
+		}
+	],
+	"runtime": {
+		"type": "node26",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../dist/index.js",
+		"permissions": {
+			"filesystem": true
+		}
+	},
+	"legacyIds": [],
+	"manufacturer": "PulseAudio",
+	"products": [
+		"Server"
+	],
+	"keywords": [
+		"PulseAudio",
+		"pavucontrol"
+	]
 }
